@@ -64,7 +64,6 @@ int main(int argc, char* argv[]) {
         EventManager em(u->eventsFile, u->email);
         em.viewByDate(argv[4]);
     }
-    //
     else if (command == "search") {
         if (argc < 5) return 1;
         User* u = userManager.loginUser(argv[2], argv[3]);
@@ -85,6 +84,36 @@ int main(int argc, char* argv[]) {
         if (!u) return 1;
         EventManager em(u->eventsFile, u->email);
         em.timeline();
+    }
+
+    // ---------- Newly Added Event Commands ----------
+    else if (command == "edit-event") {
+        if (argc < 4) { cout << "Usage: edit-event <username> <password>\n"; return 1; }
+        User* u = userManager.loginUser(argv[2], argv[3]);
+        if (!u) { cout << " Invalid login\n"; return 1; }
+        EventManager em(u->eventsFile, u->email);
+        em.editEvent(); // interactive (asks for Event ID and new details)
+    }
+    else if (command == "delete-event") {
+        if (argc < 4) { cout << "Usage: delete-event <username> <password>\n"; return 1; }
+        User* u = userManager.loginUser(argv[2], argv[3]);
+        if (!u) { cout << " Invalid login\n"; return 1; }
+        EventManager em(u->eventsFile, u->email);
+        em.deleteEvent(); // interactive (asks for Event ID)
+    }
+    else if (command == "undo") {
+        if (argc < 4) { cout << "Usage: undo <username> <password>\n"; return 1; }
+        User* u = userManager.loginUser(argv[2], argv[3]);
+        if (!u) { cout << " Invalid login\n"; return 1; }
+        EventManager em(u->eventsFile, u->email);
+        em.undoLast();
+    }
+    else if (command == "send-reminders") {
+        if (argc < 4) { cout << "Usage: send-reminders <username> <password>\n"; return 1; }
+        User* u = userManager.loginUser(argv[2], argv[3]);
+        if (!u) { cout << " Invalid login\n"; return 1; }
+        EventManager em(u->eventsFile, u->email);
+        em.sendReminders(u->email);
     }
     else {
         cout << " Unknown command\n";
