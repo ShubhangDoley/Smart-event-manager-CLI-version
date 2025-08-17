@@ -41,7 +41,7 @@ int main(int argc, char* argv[]) {
         EventManager em(u->eventsFile, u->email);
         Event e{em.nextId(), argv[4], argv[5], argv[6], argv[7], argv[8], argv[9]};
         em.addEvent(e);
-        cout << "✅ Event added!\n";
+        cout << "✅ Event added\n";
     }
     else if (command == "view-events") {
         if (argc < 4) { cout << "Usage: view-events <username> <password>\n"; return 1; }
