@@ -33,7 +33,7 @@ void UserManager::saveUsers() {
 bool UserManager::registerUser(string username, string password,string email) {
     for (auto &u : users) {
         if (u.username == username) {
-            cout << "❌ Username already exists!\n";
+            cout << " Username already exists!\n";
             return false;
         }
     }
@@ -49,7 +49,7 @@ bool UserManager::registerUser(string username, string password,string email) {
     ofstream fout(newUser.eventsFile);
     fout.close();
 
-    cout << "✅ User registered successfully! Login to continue.\n";
+    cout << " User registered successfully! Login to continue.\n";
     return true;
 }
 
@@ -71,10 +71,10 @@ bool UserManager::deleteUser(string username) {
         users.erase(it, users.end());
         saveUsers();
         remove(eventsFile.c_str());
-        cout << "🗑️ User '" << username << "' deleted.\n";
+        cout << " User '" << username << "' deleted.\n";
         return true;
     }
-    cout << "❌ User not found.\n";
+    cout << " User not found.\n";
     return false;
 }
 
@@ -84,11 +84,11 @@ bool UserManager::resetPassword(string username, string newPassword) {
         if (u.username == username) {
             u.password = newPassword;
             saveUsers();
-            cout << "🔑 Password reset for user '" << username << "'.\n";
+            cout << " Password reset for user '" << username << "'.\n";
             return true;
         }
     }
-    cout << "❌ User not found.\n";
+    cout << " User not found.\n";
     return false;
 }
 

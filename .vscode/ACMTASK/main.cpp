@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
     }
     else if (command == "login") {
         if (argc < 4) { cout << "Usage: login <username> <password>\n"; return 1; }
-        cout << (userManager.loginUser(argv[2], argv[3]) ? "✅ Login success\n" : "❌ Invalid login\n");
+        cout << (userManager.loginUser(argv[2], argv[3]) ? " Login success\n" : " Invalid login\n");
     }
     else if (command == "list-users") {
         for (auto &u : userManager.getAllUsers()) {
@@ -37,16 +37,16 @@ int main(int argc, char* argv[]) {
     else if (command == "add-event") {
         if (argc < 10) { cout << "Usage: add-event <username> <password> <name> <date> <time> <type> <location> <recurrence>\n"; return 1; }
         User* u = userManager.loginUser(argv[2], argv[3]);
-        if (!u) { cout << "❌ Invalid login\n"; return 1; }
+        if (!u) { cout << " Invalid login\n"; return 1; }
         EventManager em(u->eventsFile, u->email);
         Event e{em.nextId(), argv[4], argv[5], argv[6], argv[7], argv[8], argv[9]};
         em.addEvent(e);
-        cout << "✅ Event added\n";
+        cout << " Event added\n";
     }
     else if (command == "view-events") {
         if (argc < 4) { cout << "Usage: view-events <username> <password>\n"; return 1; }
         User* u = userManager.loginUser(argv[2], argv[3]);
-        if (!u) { cout << "❌ Invalid login\n"; return 1; }
+        if (!u) { cout << " Invalid login\n"; return 1; }
         EventManager em(u->eventsFile, u->email);
         em.viewEvents();
     }
@@ -87,7 +87,7 @@ int main(int argc, char* argv[]) {
         em.timeline();
     }
     else {
-        cout << "❌ Unknown command\n";
+        cout << " Unknown command\n";
     }
 
     return 0;

@@ -73,7 +73,7 @@ int EventManager::nextId() {
 // ===== Add Event (CLI-friendly) =====
 void EventManager::addEvent(const Event &e) {
     if (isDuplicate(e)) {
-        cout << "❌ Duplicate event!\n";
+        cout << " Duplicate event!\n";
         return;
     }
     events.push_back(e);
@@ -96,19 +96,6 @@ void EventManager::addEventInteractive() {
     addEvent(e);
 }
 
-// ===== Other functions (unchanged) =====
-// void EventManager::editEvent() { /* same as before */ }
-// void EventManager::deleteEvent() { /* same as before */ }
-// void EventManager::viewEvents() { /* same as before */ }
-// void EventManager::viewToday() { /* same as before */ }
-// void EventManager::viewByDate(string d) { /* same as before */ }
-// void EventManager::searchEvent(string key) { /* same as before */ }
-// void EventManager::analytics() { /* same as before */ }
-// void EventManager::undoLast() { /* same as before */ }
-// void EventManager::timeline() { /* same as before */ }
-// string EventManager::todayDate() { /* same as before */ }
-// void EventManager::sendReminders(string email) { /* same as before */ }
-
 void EventManager::editEvent() {
     int id; cout << "Enter Event ID to edit: "; cin >> id; cin.ignore();
     for (auto &e : events) {
@@ -125,24 +112,23 @@ void EventManager::editEvent() {
 
             save();
             history.push({"edit", old});
-            cout << "✏️ Event updated!\n";
+            cout << " Event updated!\n";
             return;
         }
     }
-    cout << "❌ Event not found.\n";
+    cout << " Event not found.\n";
 }
 void EventManager::deleteEvent() {
     int id; cout << "Enter Event ID to delete: "; cin >> id;
-    auto it = remove_if(events.begin(), events.end(),
-                        [&](Event &e){ return e.id == id; });
+    auto it = remove_if(events.begin(), events.end(),[&](Event &e){ return e.id == id; });
     if (it != events.end()) {
         Event deleted = *it;
         events.erase(it, events.end());
         save();
         history.push({"delete", deleted});
-        cout << "🗑️ Event deleted!\n";
+        cout << " Event deleted!\n";
     } else {
-        cout << "❌ Event not found.\n";
+        cout << " Event not found.\n";
     }
 }
 void EventManager::viewEvents() {
@@ -158,7 +144,7 @@ void EventManager::viewEvents() {
 }
 void EventManager::viewToday() {
     string today = todayDate();
-    cout << "\n📅 Today (" << today << "):\n";
+    cout << "\nToday (" << today << "):\n";
     bool found = false;
     for (auto &e : events) {
         if (e.date == today) {
@@ -170,13 +156,12 @@ void EventManager::viewToday() {
     if (!found) cout << "No events today.\n";
 }
 void EventManager::viewByDate(string d) {
-    if (!isValidDate(d)) { cout << "❌ Invalid date!\n"; return; }
-    cout << "\n📅 Events on " << d << ":\n";
+    if (!isValidDate(d)) { cout << " Invalid date!\n"; return; }
+    cout << "\n Events on " << d << ":\n";
     bool found = false;
     for (auto &e : events) {
         if (e.date == d) {
-            cout << "[" << e.id << "] " << e.name << " at " << e.time
-                 << " (" << e.type << ")\n";
+            cout << "[" << e.id << "] " << e.name << " at " << e.time<< " (" << e.type << ")\n";
             found = true;
         }
     }
@@ -200,7 +185,7 @@ void EventManager::searchEvent(string key) {
 void EventManager::analytics() {
     map<string,int> typeCount;
     for (auto &e : events) typeCount[e.type]++;
-    cout << "\n📊 Analytics:\n";
+    cout << "\n Analytics:\n";
     cout << "Total events: " << events.size() << "\n";
     for (auto &p : typeCount) {
         cout << p.first << " -> " << p.second << " events\n";
@@ -208,7 +193,7 @@ void EventManager::analytics() {
 }
 void EventManager::undoLast() {
     if (history.empty()) {
-        cout << "❌ Nothing to undo!\n";
+        cout << " Nothing to undo!\n";
         return;
     }
     Action last = history.top();
@@ -218,11 +203,11 @@ void EventManager::undoLast() {
         events.erase(remove_if(events.begin(), events.end(),
                                [&](Event &e){ return e.id == last.event.id; }),
                      events.end());
-        cout << "↩️ Undid Add Event: " << last.event.name << "\n";
+        cout << "Undid Add Event: " << last.event.name << "\n";
     }
     else if (last.type == "delete") {
         events.push_back(last.event);
-        cout << "↩️ Undid Delete Event: " << last.event.name << "\n";
+        cout << " Undid Delete Event: " << last.event.name << "\n";
     }
     else if (last.type == "edit") {
         for (auto &e : events) {
@@ -230,14 +215,14 @@ void EventManager::undoLast() {
                 e = last.event;
                 break;
             }
-        }//
-        cout << "↩️ Undid Edit Event: " << last.event.name << "\n";
+        }
+        cout << " Undid Edit Event: " << last.event.name << "\n";
     }
     save();
 }
 void EventManager::timeline() {
     string today = todayDate();
-    cout << "\n📅 Timeline for " << today << ":\n";
+    cout << "\n Timeline for " << today << ":\n";
     vector<Event> todaysEvents;
     for (auto &e : events) {
         if (e.date == today) todaysEvents.push_back(e);
@@ -261,10 +246,10 @@ string EventManager::todayDate() {
     return string(buf);
 }
 void EventManager::sendReminders(string email) {
-    cout << "📧 Sending reminders (simulated)...\n";
+    cout << " Sending reminders (simulated)...\n";
     for (auto &e : events) {
         cout << "Reminder: " << e.name 
              << " at " << e.time << " on " << e.date
-             << " → Sent to " << userEmail << "\n";
+             << "Sent to " << userEmail << "\n";
     }
 }

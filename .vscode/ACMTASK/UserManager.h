@@ -23,7 +23,7 @@ public:
     User* loginUser(string username, string password);
     vector<User> getAllUsers();
 
-    // 🔥 Admin-only functions
+    //  Admin-only functions
     bool deleteUser(string username);
     bool resetPassword(string username, string newPassword);
 };

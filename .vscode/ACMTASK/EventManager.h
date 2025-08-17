@@ -17,7 +17,7 @@ struct Action {
     string type;
     Event event;
 };
-
+//
 class EventManager {
     vector<Event> events;
     set<string> eventKeys; 
