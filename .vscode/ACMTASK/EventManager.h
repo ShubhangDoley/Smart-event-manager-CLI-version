@@ -33,7 +33,7 @@ class EventManager {
 public:
     EventManager();
     EventManager(string filename,string email = "");
-
+// ===== Save & Load =====
     int nextId();
     void addEventInteractive();   // old interactive version (optional)
     void addEvent(const Event &e); // new CLI-friendly version

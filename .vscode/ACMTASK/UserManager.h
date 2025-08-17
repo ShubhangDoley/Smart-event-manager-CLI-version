@@ -27,5 +27,5 @@ public:
     bool deleteUser(string username);
     bool resetPassword(string username, string newPassword);
 };
-
+//
 #endif

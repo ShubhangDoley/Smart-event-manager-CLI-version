@@ -230,7 +230,7 @@ void EventManager::undoLast() {
                 e = last.event;
                 break;
             }
-        }
+        }//
         cout << "↩️ Undid Edit Event: " << last.event.name << "\n";
     }
     save();

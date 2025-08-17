@@ -64,6 +64,7 @@ int main(int argc, char* argv[]) {
         EventManager em(u->eventsFile, u->email);
         em.viewByDate(argv[4]);
     }
+    //
     else if (command == "search") {
         if (argc < 5) return 1;
         User* u = userManager.loginUser(argv[2], argv[3]);

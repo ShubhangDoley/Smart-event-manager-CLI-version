@@ -20,7 +20,7 @@ void UserManager::loadUsers() {
         if (!u.username.empty()) users.push_back(u);
     }
 }
-
+//
 // Save back to users.txt
 void UserManager::saveUsers() {
     ofstream fout(userFile);
