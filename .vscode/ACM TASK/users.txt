@@ -1,1 +1,0 @@
-max|max1|mam|max_events.txt
