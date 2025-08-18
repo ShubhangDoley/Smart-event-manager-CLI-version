@@ -43,7 +43,10 @@ Eg., ".\project.exe timeline user_name pass123"
 (9). Edit-event (Can edit events of given user by their  Event-ID's) : ".\project.exe undo-event user_name pass123"
 
 (10). Send-Remainders (This command sends remainder to users to notify them about event- Notification can be seen on respective .txt files of users) : ".\project.exe send-reminders user_name pass123"
-                                                                                                                  
+
+(11). undo (un-do last operation ): "./project.exe undo user_name pass123"
+
+(12). search event (searches the event for given user by keyword):    "./project.exe search-event user_name password keyword"                                                                                                              
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
