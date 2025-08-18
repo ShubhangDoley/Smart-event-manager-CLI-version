@@ -1,3 +1,0 @@
-1|Meeting|18-08-2025|14:30|Work|Office|none
-2|dance classes|18-08-2025|14:30|Work|classes|weekly
-3|maths classes|20-08-2025|07:30|Work|classes|monthly

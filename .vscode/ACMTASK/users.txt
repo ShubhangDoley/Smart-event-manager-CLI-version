@@ -1,3 +1,0 @@
-admin|admin123|admin@gmail.com|admin_events.txt
-bob|bob123|bob@mail.com|bob_events.txt
-john|john123|john@mail.com|john_events.txt
