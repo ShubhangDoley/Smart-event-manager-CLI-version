@@ -1,0 +1,51 @@
+ALL THE COMMANDS FOR "SMART EVENT MANAGER PROJECT"
+
+(1). Register Command (Registers New users and Admin both):   ".\project.exe register <username> <password> <email>"
+Eg., " .\project.exe register user_name pass123 user_name@mail.com"
+
+(2) Login Command (Helps to Login and work with their respective account): ".\project.exe login <username> <password>"
+Eg., ".\project.exe login user_name pass123"
+
+(3). List Users (Tells all user names and their data) : ".\project.exe list-users"
+
+(4). Delete User (Only Admin has access to it) : ".\project.exe delete-user <username>"
+Eg., ".\project.exe delete-user user_name"
+
+(5). Reset-Password (Users and Admin Both have this option) : ".\project.exe reset-password <username> <newpassword>"
+Eg., ".\project.exe reset-password user_name newpass"
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+EVENT COMMANDS:(Only for Users Not Admin)
+
+(1). Add Event: ".\project.exe add-event <username> <password> <name> <date> <time> <type> <location> <recurrence>"
+
+Eg., ".\project.exe add-event user_name pass123 "Meeting" 18-08-2025 14:30 Work Office none"
+
+(2). View Events (Tells All Events Listed for Given User):  ".\project.exe view-events <username> <password>"
+Eg.,".\project.exe view-events user_name pass123"
+
+(3). View Today (Shows todays events- used ctime library to fetch todays date) : ".\project.exe view-today <username> <password>"
+Eg., ".\project.exe view-today user_name pass123"
+
+(4).View Date (Tells all events for a user happening on given date) : ".\project.exe view-date <username> <password> <DD-MM-YYYY>"
+Eg., ".\project.exe view-date user_name pass123 20-08-2025"
+
+(5). Analytics (Shows all events listed for a user and their informations) : ".\project.exe analytics <username> <password>"
+Eg., ".\project.exe analytics user_name pass123"
+ 
+(6) TimeLine (Shows events for today in chronological order, like a day planner) : ".\project.exe timeline <username> <password>"
+Eg., ".\project.exe timeline user_name pass123"
+
+(7). Edit-event (Can edit events of given user by their  Event-ID's) : ".\project.exe edit-event user_name pass123"
+
+(8). Delete-event (Can edit events of given user by their  Event-ID's) : ".\project.exe delete-event user_name pass123"
+
+(9). Edit-event (Can edit events of given user by their  Event-ID's) : ".\project.exe undo-event user_name pass123"
+
+(10). Send-Remainders (This command sends remainder to users to notify them about event- Notification can be seen on respective .txt files of users) : ".\project.exe send-reminders user_name pass123"
+                                                                                                                  
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
